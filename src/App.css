@@ -17,6 +17,10 @@
   color: white;
 }
 
+h3, h4 {
+  margin: 15px 0 5px 0;
+}
+
 .App-link {
   color: #61dafb;
 }

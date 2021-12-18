@@ -38,22 +38,20 @@ function Board() {
 
 	return (
 		<>
-			<h2>{`${rounds} of 5`}</h2>
-
+			<h3>Positive game - find the happy face</h3>
+			<h4>{`${rounds} of ∞`}</h4>
 			<section className="board">
-				{rounds < 5 && (
-					<>
-						{cards.map((card) => {
-							return (
-								<Card
-									key={`${card.id}_${rounds}`}
-									card={card}
-									onCardClick={onCardClick}
-								/>
-							);
-						})}
-					</>
-				) }
+				<>
+					{cards.map((card) => {
+						return (
+							<Card
+								key={`${card.id}_${rounds}`}
+								card={card}
+								onCardClick={onCardClick}
+							/>
+						);
+					})}
+				</>
 			</section>
 		</>
 	);
