@@ -20,7 +20,7 @@ function Card({ card, onCardClick }) {
 			onClick={onClickHandler}
 			type="button"
 			aria-label="Card"
-			className={`card${isHappy ? ' card--happy' : ''}${isFaded ? ' card--faded' : ''}`}
+			className={`card${isFaded ? ' card--faded' : ''}`}
 			style={{ backgroundImage: `url(${process.env.PUBLIC_URL + src})` }}
 		/>
 	);
