@@ -12,6 +12,5 @@
 }
 
 .card--faded {
-	transition: ease-in-out opacity 0.2s;
 	border: 20px solid red;
 }

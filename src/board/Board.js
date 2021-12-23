@@ -27,25 +27,20 @@ const Board = () => {
 	const initialHappyCard = cardData.happyCards[0];
 	const [rounds, setRounds] = useState(0);
 	const [happyCard, setHappyCard] = useState(initialHappyCard);
-	const previousCardRef = useRef(initialHappyCard.id);
 
 	useEffect(() => {
 		renderHappyCard();
 	}, [])
 
-	useEffect(() => {
-		previousCardRef.current = happyCard.id;
-	}, [happyCard])
-
 	const renderHappyCard = () => {
 		const happyCards = cardData.happyCards;
-		const currentRef = previousCardRef.current;
-		const filteredCards = happyCards.filter(card => { return card.id !== currentRef })
-		const happyUniqueCard = filteredCards[Math.floor(Math.random() * filteredCards.length)];
 
-		setHappyCard(happyUniqueCard)
-		previousCardRef.current = happyUniqueCard.id;
-		return happyUniqueCard;
+		setHappyCard(prevState => {
+			const previousCard = prevState;
+			const filteredCards = happyCards.filter(card => { return card.id !== previousCard.id });
+			const happyUniqueCard = filteredCards[Math.floor(Math.random() * filteredCards.length)];
+			return happyUniqueCard;
+		})
 	}
 
 	const cards = getRandom(cardData.otherCards, 8);
