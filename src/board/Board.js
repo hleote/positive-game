@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-plusplus */
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Card from '../card/Card';
 import cardData from '../data/cards-data.json';
 import './style.css';
@@ -23,31 +23,37 @@ function getRandom(arr, n) {
 	return result;
 }
 
-const renderHappyCard = (previousCardRef) => {
-	const happyCards = cardData.happyCards;
-
-	if (!previousCardRef) {
-		const happyCardObj = happyCards[Math.floor(Math.random() * happyCards.length)]
-		previousCardRef.current = happyCardObj.id;
-		return happyCardObj;
-	}
-	const filteredCards = happyCards.filter(card => { return card.id !== previousCardRef.current })
-	const happyUniqueCard = filteredCards[Math.floor(Math.random() * filteredCards.length)];
-	previousCardRef.current = happyUniqueCard.id;
-	return happyUniqueCard;
-}
-
-function Board() {
+const Board = () => {
+	const initialHappyCard = cardData.happyCards[0];
 	const [rounds, setRounds] = useState(0);
-	const previousCardRef = useRef(null)
-	const cards = getRandom(cardData.otherCards, 8);
-	const happyCard = renderHappyCard(previousCardRef);
+	const [happyCard, setHappyCard] = useState(initialHappyCard);
+	const previousCardRef = useRef(initialHappyCard.id);
 
-	// add happy card at random place in cards[]
+	useEffect(() => {
+		renderHappyCard();
+	}, [])
+
+	useEffect(() => {
+		previousCardRef.current = happyCard.id;
+	}, [happyCard])
+
+	const renderHappyCard = () => {
+		const happyCards = cardData.happyCards;
+		const currentRef = previousCardRef.current;
+		const filteredCards = happyCards.filter(card => { return card.id !== currentRef })
+		const happyUniqueCard = filteredCards[Math.floor(Math.random() * filteredCards.length)];
+
+		setHappyCard(happyUniqueCard)
+		previousCardRef.current = happyUniqueCard.id;
+		return happyUniqueCard;
+	}
+
+	const cards = getRandom(cardData.otherCards, 8);
 	cards.splice(Math.floor(Math.random() * cards.length), 0, happyCard);
 
 	const onCardClick = () => {
 		setRounds(rounds + 1);
+		renderHappyCard();
 	};
 
 	return (
