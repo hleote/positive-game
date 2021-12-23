@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-plusplus */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../card/Card';
 import cardData from '../data/cards-data.json';
 import './style.css';
