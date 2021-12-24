@@ -5,22 +5,21 @@ import './style.css';
 
 function Card({ card, onCardClick }) {
 	const { isHappy, src } = card;
-	const [isFaded, setFaded] = useState(false);
+	const [isHidden, setIsHidden] = useState(false);
 
 	const onClickHandler = () => {
 		if (isHappy === true) {
 			onCardClick();
 			return;
 		}
-		setFaded(true);
+		setIsHidden(true);
 	};
 
 	return (
-		<button
+		<img
 			onClick={onClickHandler}
-			type="button"
 			aria-label="Card"
-			className={`card${isFaded ? ' card--faded' : ''}`}
+			className={`card${isHidden ? ' card--hidden' : ''}`}
 			style={{ backgroundImage: `url(${process.env.PUBLIC_URL + src})` }}
 		/>
 	);
