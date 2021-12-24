@@ -20,7 +20,7 @@ function Card({ card, onCardClick }) {
 			onClick={onClickHandler}
 			aria-label="Card"
 			className={`card${isHidden ? ' card--hidden' : ''}`}
-			style={{ backgroundImage: `url(${process.env.PUBLIC_URL + src})` }}
+			style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${src})` }}
 		/>
 	);
 }

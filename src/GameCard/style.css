@@ -5,7 +5,8 @@
 	margin: 0.8rem;
 	padding: 0;
 	border: 0;
-	transition: ease-in-out opacity 0.8s;
+	transition: width 2s, height 4s;
+	transition-timing-function: ease-in-out;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
