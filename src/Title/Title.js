@@ -6,7 +6,11 @@ const Title = ({ children }) => {
 }
 
 Title.propTypes = {
-	children: PropTypes.element
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+		PropTypes.string
+	])
 };
 
 export default Title;
