@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from 'react';
-import Card from '../Card';
+import GameCard from '../GameCard';
 import Title from '../Title'
 import SubTitle from '../SubTitle'
 
@@ -62,7 +62,7 @@ const Board = () => {
 				<>
 					{cards.map((card) => {
 						return (
-							<Card
+							<GameCard
 								key={`${card.id}_${rounds}`}
 								card={card}
 								onCardClick={onCardClick}
