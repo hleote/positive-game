@@ -1,7 +1,10 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from 'react';
-import Card from '../card/Card';
+import Card from '../Card';
+import Title from '../Title'
+import SubTitle from '../SubTitle'
+
 import cardData from '../data/cards-data.json';
 import './style.css';
 
@@ -53,8 +56,8 @@ const Board = () => {
 
 	return (
 		<>
-			<h3>Positive game - find the happy face</h3>
-			<h4>{`${rounds} of ∞`}</h4>
+			<Title>Positive game - find the happy face</Title>
+			<SubTitle>{`${rounds} of ∞`}</SubTitle>
 			<section className="board">
 				<>
 					{cards.map((card) => {
