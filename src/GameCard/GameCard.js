@@ -14,13 +14,12 @@ function Card({ card, onCardClick }) {
 		}
 		setIsHidden(true);
 	};
-
 	return (
 		<img
+			src={`${process.env.PUBLIC_URL}${src}`}
 			onClick={onClickHandler}
 			aria-label="Card"
 			className={`card${isHidden ? ' card--hidden' : ''}`}
-			style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${src})` }}
 		/>
 	);
 }
