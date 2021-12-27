@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-plusplus */
 import { useEffect, useState } from 'react';
 import GameCard from '../GameCard';
 import Title from '../Title'
