@@ -1,14 +1,13 @@
-version: '3.7'
+version: "3.8"
+
 services:
-  frontend:
+  app:
     container_name: frontend
-    build: .
+    image: frontend
+    build:
+      context: .
+      target: development
     volumes:
-      - './:/app'
-      - '/app/node_modules'
+      - ./src:/app/src
     ports:
       - 3000:3000
-    stdin_open: true
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    command: npm start

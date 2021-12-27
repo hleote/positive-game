@@ -1,13 +1,15 @@
-FROM node:14.9
+FROM node:14.18.1
  
-WORKDIR /usr/src/app
- 
-COPY package*.json ./
- 
-RUN npm install
- 
+ENV NODE_ENV development
+# Add a work directory
+WORKDIR /app
+# Cache and Install dependencies
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
+# Copy app files
 COPY . .
- 
+# Expose port
 EXPOSE 3000
- 
-CMD [ "npm", "start" ]
+# Start the app
+CMD [ "yarn", "start" ]
