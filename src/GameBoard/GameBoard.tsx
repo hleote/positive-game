@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-plusplus */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import GameCard from '../GameCard';
 import Title from '../Title'
 import SubTitle from '../SubTitle'
@@ -8,7 +8,13 @@ import SubTitle from '../SubTitle'
 import cardData from '../data/cards-data.json';
 import './style.css';
 
-function getRandom(arr, n) {
+export interface Card {
+	id: string,
+	src: string,
+	isHappy?: boolean
+}
+
+function getRandom(arr: Array<Card>, n: number) {
 	const result = new Array(n);
 	let len = arr.length;
 	const taken = new Array(len);

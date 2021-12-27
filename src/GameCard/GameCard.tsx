@@ -1,9 +1,15 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
+import { Card as CardType } from '../GameBoard/GameBoard';
+
 import './style.css';
 
-function Card({ card, onCardClick }) {
+type CardParams = {
+	card: CardType,
+	onCardClick: Function
+}
+
+const Card: React.FunctionComponent<CardParams> = ({ card, onCardClick }: CardParams) => {
 	const { isHappy, src } = card;
 	const [isHidden, setIsHidden] = useState(false);
 
@@ -23,16 +29,5 @@ function Card({ card, onCardClick }) {
 		/>
 	);
 }
-
-Card.defaultProps = {
-	card: {},
-	onCardClick: () => { },
-};
-
-Card.propTypes = {
-	onCardClick: PropTypes.func,
-	// eslint-disable-next-line react/forbid-prop-types
-	card: PropTypes.object,
-};
 
 export default Card;
